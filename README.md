@@ -1,6 +1,6 @@
 # ScryWarden
 
-ScryWarden is a framework for detecting anomalies in general datasets through the use of behavioral profiling. The library provides simple interfaces to design behavioral profiles, to pull messages from datasets, and to report on found anomalies. Its also engineered to horizontally scale as needed for larger datasets.
+ScryWarden is a framework for detecting anomalies in general datasets through the use of behavioral models. The library provides simple interfaces to design behavioral profiles, to pull messages from datasets, and to report on found anomalies. Its also engineered to horizontally scale as needed for larger datasets.
 
 It aims to be an accessible anomaly detection method that doesn't require any advanced knowledge on the topic while also allowing those with relevant knowledge to extend it for their needs.
 
@@ -20,7 +20,7 @@ This will install a CLI command in your path called `scrywarden`. Try it out by 
 $ scrywarden --help
 Usage: scrywarden [OPTIONS] COMMAND [ARGS]...
 
-  Detects anomalies in datasets using behavioral profiling.
+  Detects anomalies in datasets using behavioral modeling.
 
 Options:
   -c, --config TEXT  Path to the config file to use.  [default:

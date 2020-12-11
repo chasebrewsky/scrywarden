@@ -5,10 +5,10 @@ with open("README.md", "r") as file:
 
 setup(
     name='scrywarden',
-    version='0.1.0',
+    version='0.1.1',
     author='Chase Brewer',
     author_email='chasebrewsky@gmail.com',
-    description="Detect anomalies in datasets using behavioral profiling",
+    description="Detect anomalies in datasets using behavioral modeling",
     long_description=README,
     long_description_content_type='text/markdown',
     url='https://github.com/chasebrewsky/scrywarden',

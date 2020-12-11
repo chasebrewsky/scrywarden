@@ -22,7 +22,7 @@ from scrywarden.transport.config import parse_transports
 )
 @click.pass_context
 def main(ctx: Context, **kwargs):
-    """Detects anomalies in datasets using behavioral profiling."""
+    """Detects anomalies in datasets using behavioral modeling."""
     ctx.ensure_object(dict)
     ctx.obj['config_file'] = kwargs['config']
 

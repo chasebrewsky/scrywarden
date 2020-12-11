@@ -1,6 +1,6 @@
 import typing as t
 from collections import KeysView, ItemsView, ValuesView
-from datetime import datetime
+from datetime import datetime, timezone
 from uuid import uuid4, UUID
 
 from scrywarden.typing import JSONValue
@@ -133,7 +133,9 @@ class Message(t.NamedTuple):
         Message
             Created message object.
         """
-        return cls(id or uuid4(), timestamp or datetime.now(), data)
+        return cls(
+            id or uuid4(), timestamp or datetime.now(timezone.utc), data,
+        )
 
     def __getitem__(self, item: t.Sequence[str]) -> JSONValue:
         if isinstance(item, str):

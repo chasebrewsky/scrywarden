@@ -2,7 +2,7 @@ import logging
 import threading
 import typing as t
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from queue import Queue, Full
 
 import pandas as pa
@@ -167,7 +167,7 @@ class Investigator(threading.Thread):
         logger.debug("\n%s", malicious_anomalies)
         with self._session(expire_on_commit=False) as session:
             session.add(investigation)
-            investigation.completed_at = datetime.now()
+            investigation.completed_at = datetime.now(timezone.utc)
             session.flush()
         return investigation, malicious_anomalies
 

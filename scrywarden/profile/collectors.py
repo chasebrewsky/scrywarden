@@ -1,7 +1,7 @@
 import logging
 import threading
 import typing as t
-from datetime import timedelta, datetime
+from datetime import timedelta, datetime, timezone
 
 import pandas as pa
 from sqlalchemy.orm import sessionmaker, Session
@@ -247,7 +247,7 @@ class TimeRangeCollector(Collector):
     def _wait(self, target: datetime) -> bool:
         timeout: float = 0.0
         while not self.shutdown.wait(timeout):
-            now = datetime.now()
+            now = datetime.now(timezone.utc)
             logger.debug("Target start time %s current time %s", target, now)
             if target + timedelta(seconds=self.delay) <= now:
                 break
@@ -297,7 +297,9 @@ class TimeRangeCollector(Collector):
         first_event = self._get_first_event(profile)
         if not first_event:
             return pa.DataFrame()
-        return self._loop_until_anomalies(profile, first_event.created_at)
+        return self._loop_until_anomalies(
+            profile, first_event.created_at - timedelta(seconds=1),
+        )
 
 
 PARSER = parsers.Options({
